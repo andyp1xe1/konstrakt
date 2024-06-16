@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='/images/favicon.png') }}" />
+    <title>CodeGuard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/codemirror.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/material-palenight.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/material-darker.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/material-ocean.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/dracula.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/ayu-dark.css') }}" />
+    <script src="{{ url_for('static', filename='scripts/codemirror.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/python.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/javascript.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/clike.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/active-line.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/placeholder.js') }}"></script>
+    <script src="https://unpkg.com/acorn@8.11.3/dist/acorn.js"></script>
+
+
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/5219584b10.js" crossorigin="anonymous"></script>
+    
+</head>
+<body>
+    <div class="header">
+        <a href="#">
+        <img src="{{ url_for('static', filename='/images/favicon.png') }}" alt="Logo">
+        <h1 id="headerText">CodeGuard</h1>
+        </a>
+    </div>
+    <div class="container" id="box">
+        <h1 id="containerText">Code Plagiarism Checker</h1>
+        <div class ="main-content">
+            <div class="input" id="idSection">
+                
+                <div id="codeText">
+                    <style>
+                        .CodeMirror {
+                            width: 0;
+                            height:400px;
+                            flex-grow: 1;
+                            border-radius: 5px;
+                        }
+                        
+
+
+                    </style>
+                    <textarea id="inputText" placeholder="Enter your code here..."></textarea>
+                    <script>
+                        var nonEmpty = false;
+                        var editor = CodeMirror.fromTextArea(document.getElementById('inputText'), {
+                            mode: "text/x-csrc",
+                            theme: "material-ocean",
+                            lineNumbers: true,
+                            });
+
+                    </script>
+                </div>
+                <div class="error-message-container" id="errorMessageContainer">
+                    <div class="error-message">
+                        <span id="errorMessageText" style="font-size: 13px; text-align: center;">Code must have at least 200 characters.</span>
+                        <button class="close-button" onclick="hideErrorMessage()">✕</button>
+                    </div>
+                </div>
+                <div class="userInteraction">
+                    <div class="dropdown-wrapper">
+                        <div class="dropdown-btn">
+                            <span id="selected-item">C</span>
+                            <span><i class="fa-solid fa-caret-down"></i></span>
+                        </div>
+                        <div class="dropdown-menu">
+                            <div class="item active">C</div>
+                            <div class="item">Python</div>
+                            <div class="item">JavaScript</div>
+                        </div>
+                    </div>
+                    <div id="inputButtons">
+                        <button onclick="checkAndSendText()">Check Code</button>
+                    </div>
+                </div>
+            </div>
+            <div class="results" id="resultsSection">
+                <div id="loadingSpinner" class="loading-spinner">
+                    <img src="{{ url_for('static',filename='/images/loading.gif') }}" alt="Loading" draggable="false" />
+                </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" id="plagiarismScore"
+                    version="1.1" width="160px"
+                    height="160px">
+                    <circle id="gray_circle" cx="80" cy="80" r="70" stroke="#4D4D4D" stroke-width="20" fill="none" stroke-linecap="round"/>
+                    <circle id ="score_circle" cx="80" cy="80" r="70" stroke-linecap="round"/>
+                    <text id="percent" x="50%" y="55%" text-anchor="middle" alignment-baseline="central" font-size="36" fill="#cfcfcf">0%</text>
+                    </svg>
+                    <p id="resultsText"></p>
+            </div>
+        </div>
+    </div>
+  
+    <footer>
+        <div class="copyright">
+            <p>&copy; 2024 CodeGuard</p>
+        </div>
+        <div class="social-icons">
+            <a href="https://github.com" target="_blank"><img class="socialicon" src="{{ url_for('static', filename='images/github.png') }}" alt="GitHub"></a>
+            <a href="https://linkedin.com" target="_blank"><img class="socialicon" src="{{ url_for('static', filename='images/linkedin.png') }}" alt="LinkedIn"></a>
+        </div>
+    </footer>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
