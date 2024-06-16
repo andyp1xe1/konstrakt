@@ -54,6 +54,8 @@ deff_prompt = "You are a dictionary entry picker. Pick the best Romanian deffini
 
 tr_prompt = "You are a technical translation software similar to google translate. You specialize in instruments and construction materials. Translsate from Russian to Romanian. Give only the Rommanian translation."
 
+# img_prompt = "You are an image picker. You return the "
+
 
 def make_list_from_file(file_path):
     with open(file_path, 'r') as file:

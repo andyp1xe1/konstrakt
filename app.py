@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
-from retreiver import retreiver, chat
+from retreiver import retreiver
 # from img_get import img_get
 
 app = Flask(__name__)

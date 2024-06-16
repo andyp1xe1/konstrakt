@@ -146,6 +146,31 @@
     document.addEventListener('DOMContentLoaded', function () {
       var query = "{{ query }}";
       document.getElementById('queryInput').value = query;
+      img = document.querySelectorAll(".image")[0]
+      switch (query) {
+        case 'benzopila':
+          img.style['background-image'] = "url('/static/images/benzopila.jpg')"
+          console.log("AAAA")
+          break;
+        case 'bolgarka':
+          img.style['background-image'] = "url('/static/images/bolgarka.jpg')"
+          break;
+        case 'gaika':
+          img.style['background-image'] = "url('/static/images/gaika.jpg')"
+          break;
+        case 'lobzik':
+          img.style['background-image'] = "url('/static/images/lobzik.jpg')"
+          break;
+        case 'shifer':
+          img.style['background-image'] = "url('/static/images/shifer.jpg')"
+          break;
+        case 'surupavert':
+          img.style['background-image'] = "url('/static/images/surupavert.jpg')"
+          break;
+        default:
+          img.style['background-image'] = "url('/static/images/codifyformatter.png')"
+          break;
+      }
     });
     function validateForm() {
       var query = document.getElementById("queryInput").value.trim();
