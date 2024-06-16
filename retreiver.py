@@ -6,8 +6,7 @@ import hunspell
 import requests
 from bs4 import BeautifulSoup
 import urllib.parse
-
-gpt_key = ""
+gpt_key = "sk-proj-SWNqwtvt6luWjiP586uAT3BlbkFJTlAn6Y2MIal8mDO5yIG1"
 
 cons = ['б', 'в', 'х', 'г', 'д', 'ж', 'з', 'п', 'ф', 'к', 'т', 'ш', 'с', ]
 suffixes = ['а', 'аемый', 'аж', 'ак', 'аль', 'альный',
@@ -258,5 +257,5 @@ def retreiver(text):
 
 
 # q = input()
-#
+##
 # print(retreiver(q))
